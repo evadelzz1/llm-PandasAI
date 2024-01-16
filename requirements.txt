@@ -1,6 +1,14 @@
+python_dotenv
 streamlit
 streamlit_extras
+openai
 pandasai==0.2.2
 matplotlib
 PyQt5
 bs4
+openpyxl
+
+# pandasai==1.5.3
+# astor
+# matplotlib
+# langchain
