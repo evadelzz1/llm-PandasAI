@@ -4,7 +4,7 @@ import os
 
 def main():
     st.set_page_config(
-        page_title = "QuizGPT Apps",
+        page_title = "PandasAI Apps",
         page_icon = "",
     )
 
@@ -17,7 +17,7 @@ def main():
         )
     
     # main page
-    st.title("Welcome to the QuizGPT Apps")
+    st.title("Welcome to the PandasAI Apps")
     st.divider()
 
     st.write("**OPENAI_API_KEY Selection**")

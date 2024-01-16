@@ -14,9 +14,9 @@ def main():
     OPENAI_API_KEY = st.session_state.openai_api_key
 
     st.set_page_config(
-        page_title="PandasAI",
-        page_icon="🧠",
-        layout="centered"
+        page_title="ChatCSV3",
+        page_icon="",
+        layout="wide"
     )
 
     with st.sidebar:
@@ -27,8 +27,8 @@ def main():
 
     st.title("Prompt-driven analysis with PandasAI")
 
-    st.write("PandasAI, OpenAI and Streamlit - Analyzing File Uploads with User Prompts [https://www.youtube.com/watch?v=oSC2U2iuMRg]")
-
+    st.write("PandasAI, OpenAI and Streamlit - Analyzing File Uploads with User Prompts [ChatCSV](https://www.youtube.com/watch?v=oSC2U2iuMRg)")
+ 
     uploaded_file = st.file_uploader(
         "Choose a CSV file. This should be in long format (one datapoint per row).",
         type="csv",

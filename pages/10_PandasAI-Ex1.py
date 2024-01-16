@@ -34,7 +34,7 @@ def main():
         st.session_state.prompt_history = []
         st.session_state.df = None
         uploaded_file = st.file_uploader(
-            "Choose a CSV file. This should be in long format (one datapoint per row).",
+            "Choose a CSV file. This should be in long format (one datapoint per row). :red[(iris.csv)]",
             type="csv",
         )
         if uploaded_file is not None:
@@ -48,7 +48,7 @@ def main():
             type="default"
         )
         
-        submitted = st.form_submit_button("Submit")
+        submitted = st.form_submit_button("Generate")
         if submitted:
             with st.spinner():
                 llm = OpenAI(api_token=OPENAI_API_KEY)

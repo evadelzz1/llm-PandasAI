@@ -12,8 +12,8 @@ def main():
 
     st.set_page_config(
         page_title="PandasAI",
-        page_icon="🧠",
-        layout="centered"
+        page_icon="",
+        layout="wide"
     )
 
     with st.sidebar:
@@ -24,41 +24,62 @@ def main():
         
     st.title("pandas-ai streamlit interface")
 
-    st.write("A demo interface for [PandasAI](https://devocean.sk.com/blog/techBoardDetail.do?ID=165102&boardType=techBlog)")
+    st.write("A demo interface for [PandasAI](https://github.com/gventuri/pandas-ai)")
 
-    df = pd.read_csv("https://raw.githubusercontent.com/yunwoong7/toy_datasets/main/csv/titanic.csv")
-    st.dataframe(df)
-    
-    # df = pd.DataFrame({
-    #     "country": ["United States", "United Kingdom", "France", "Germany", "Italy", "Spain", "Canada", "Australia", "Japan", "China"],
-    #     "gdp": [21400000, 2940000, 2830000, 3870000, 2160000, 1350000, 1780000, 1320000, 516000, 14000000],
-    #     "happiness_index": [7.3, 7.2, 6.5, 7.0, 6.0, 6.3, 7.3, 7.3, 5.9, 5.0]
-    # })
-    # st.write("Dataframe : ")
-    # st.dataframe(df.style.highlight_max(axis=0) ) 
+    if 'df' not in st.session_state:
+        st.session_state.df = None
+    if 'prompt_history' not in st.session_state:
+        st.session_state.prompt_history = []
 
-    llm = OpenAI(api_token=OPENAI_API_KEY)
-    pandas_ai = PandasAI(llm)
+    # if "openai_api_key" in st.session_state:
+    if st.session_state.df is None:
+        uploaded_file = st.file_uploader(
+            "Choose a CSV file. This should be in long format (one datapoint per row). :red[(titanic.csv)]",
+            type="csv",
+        )
+        if uploaded_file is not None:
 
-    question = st.selectbox(
-        "Select the quiz type",
-        ["What is the average age of passengers?",
-         "승객들의 평균 연령은?",
-         "Calculate the number of survivors by room class and gender.",
-         "We are trying to create a model that predicts the Survived column using data. Which column is the most important?",
-         "Show the survival rate by sex in a graph.",
-         "Plot the histogram of Age.",
-        ]
-    )
+            col1, col2 = st.columns([1,1])
 
-    if st.button("Submit"):
-        response = pandas_ai.run(df, prompt=question, show_code=True)
-        st.info(response)
-       
-    # response = pandas_ai.run(df, prompt='What are the 5 happiest countries')
-    # st.write(response)
-    # pandas_ai.run(df, "Plot the histogram of countries showing for each the gpd, using different colors for each bar")
-    
+            with col1:
+                st.info("CSV Uploaded Successfully")
+                df = pd.read_csv(uploaded_file)
+                st.dataframe(df, use_container_width=True)
+
+            with col2:
+
+                st.info("Chat Below")
+                        
+                with st.form("Question"):
+                    question = st.text_input(
+                        "Question : ",
+                        value="What is the average age of passengers?",
+                        type="default"
+                    )
+                    
+                    submitted = st.form_submit_button("Generate")
+                    if submitted:
+                        with st.spinner("PandasAI is generating an answer, please wait..."):
+                            st.info("Your Query: "+question)
+                            try:
+                                llm = OpenAI(api_token=OPENAI_API_KEY)
+                                pandas_ai = PandasAI(llm)
+                                result = pandas_ai.run(df, prompt=question)
+                                if result is not None:
+                                    st.success(result)
+                                st.session_state.prompt_history.append(question)
+                            except Exception as e:
+                                generated_text = None
+                                st.error(f"An error occurred: {e}", icon="🚨")
+
+    st.subheader("Prompt history:")
+    st.write(st.session_state.prompt_history)
+
+    if st.button("Clear"):
+        st.session_state.prompt_history = []
+        st.session_state.df = None
+        st.experimental_rerun()
+        
 if __name__=="__main__":
     if "openai_api_key" not in st.session_state:
         st.error("Need a OPENAI_API_KEY! Go to the Home.", icon="🚨")
@@ -66,7 +87,3 @@ if __name__=="__main__":
         switch_page('Home')
 
     main()
-
-
-
-                
