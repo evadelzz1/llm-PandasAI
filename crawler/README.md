@@ -1,12 +1,12 @@
-# llm-PandasAI
+# Quiz
 
 ### Cloning the Repository
 
-    git clone https://github.com/evadelzz1/llm-PandasAI.git
+    git clone https://github.com/evadelzz1/experiment3.git
 
 ### Setting up a Virtual Environment
 
-    cd ./llm-PandasAI
+    cd ./experiment3
 
     pyenv versions
 

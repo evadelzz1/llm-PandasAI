@@ -1,0 +1,5 @@
+streamlit
+streamlit_extras
+pandasai==0.2.2
+matplotlib
+PyQt5
