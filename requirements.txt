@@ -8,6 +8,7 @@ PyQt5
 bs4
 openpyxl
 
+
 # pandasai==1.5.3
 # astor
 # matplotlib
