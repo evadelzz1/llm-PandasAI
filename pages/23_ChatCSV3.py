@@ -22,7 +22,7 @@ def main():
     with st.sidebar:
         st.header("👨‍💻 About the Author")
         st.write("""
-        :orange[**Daniel**] is a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
+        I'm a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
         """)
 
     st.title("Prompt-driven Analysis with PandasAI")
@@ -49,7 +49,6 @@ def main():
         if st.button("Generate"):
             with st.spinner("PandasAI is generating an answer, please wait..."):
                 if prompt:
-                    
                     llm = OpenAI(api_token=OPENAI_API_KEY)
                     pandas_ai = PandasAI(llm)
                     response = pandas_ai.run(df, prompt=prompt)
@@ -60,7 +59,6 @@ def main():
         if st.button("Generate2"):
             with st.spinner("PandasAI is generating an answer, please wait..."):
                 if prompt:
-                    
                     llm = OpenAI(api_token=OPENAI_API_KEY)
                     pandas_ai = PandasAI(llm)
                     response = pandas_ai.run(df, prompt=prompt)
@@ -75,7 +73,3 @@ if __name__=="__main__":
         switch_page('Home')
 
     main()
-
-
-
-                

@@ -19,7 +19,7 @@ def main():
     with st.sidebar:
         st.header("👨‍💻 About the Author")
         st.write("""
-        :orange[**Daniel**] is a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
+        I'm a tech enthusiast and coder.Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
         """)
         
     st.title("Pandas-AI Streamlit Apps 1st")
@@ -47,7 +47,6 @@ def main():
                 st.dataframe(df, use_container_width=True)
 
             with col2:
-
                 st.info("Chat Below")
                         
                 with st.form("Question"):
