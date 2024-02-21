@@ -22,9 +22,9 @@ def main():
         :orange[**Daniel**] is a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
         """)
         
-    st.title("pandas-ai streamlit interface")
+    st.title("Pandas-AI Streamlit Apps 1st")
 
-    st.write("A demo interface for [PandasAI](https://github.com/gventuri/pandas-ai)")
+    # st.write("A demo interface for [PandasAI](https://github.com/gventuri/pandas-ai)")
 
     if 'df' not in st.session_state:
         st.session_state.df = None

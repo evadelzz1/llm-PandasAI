@@ -21,7 +21,7 @@ def main():
         :orange[**Daniel**] is a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
         """)
 
-    st.title("Prompt-driven analysis with PandasAI")
+    st.title("Prompt-driven Analysis with PandasAI")
 
     st.write("PandasAI, OpenAI and Streamlit - Analyzing File Uploads with User Prompts [ChatCSV](https://www.youtube.com/watch?v=oSC2U2iuMRg)")
  

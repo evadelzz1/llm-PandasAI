@@ -22,10 +22,10 @@ def main():
         :orange[**Daniel**] is a tech enthusiast and coder. Driven by passion and a love for sharing knowledge, I'm created this platform to make learning more interactive and fun.
         """)
         
-    st.title("pandas-ai streamlit interface")
+    st.title("Pandas-AI Streamlit Apps 3rd")
 
-    st.write("A demo interface for [PandasAI](https://devocean.sk.com/blog/techBoardDetail.do?ID=165102&boardType=techBlog)")
-
+    # st.write("A demo interface for [PandasAI](https://devocean.sk.com/blog/techBoardDetail.do?ID=165102&boardType=techBlog)")    
+    
     df = pd.read_csv("https://raw.githubusercontent.com/yunwoong7/toy_datasets/main/csv/titanic.csv")
     st.dataframe(df, use_container_width=True)
 
